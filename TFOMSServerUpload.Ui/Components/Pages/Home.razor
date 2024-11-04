@@ -1,0 +1,31 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+<div class="home">
+    <p>
+        Текущий период: Основная приемка c
+        <span class="date-beg">01.01.2024</span> по
+        <span class="date-end">05.01.2024</span>
+    </p>
+
+    <div class="upload-file">
+        <p>
+            Ручная загрузка реестра счетов
+        </p>
+        <hr>
+        <div class="div-button">
+            <TelerikButton Class="upload-button">Загрузить</TelerikButton>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .upload-button, 
+    .upload-button:hover {
+        background-color: #749ebc;
+        color: white;
+        width: 180px;
+        height: 25px;
+    }
+</style>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TFOMSServerUpload", "TFOMSServerUpload\TFOMSServerUpload.csproj", "{B8B69CA7-19F6-4171-89FC-343F4017A5CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TFOMSServerUpload.Ui", "TFOMSServerUpload.Ui\TFOMSServerUpload.Ui.csproj", "{810763EC-7E20-4C91-86D2-CF4B37A6168E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8B69CA7-19F6-4171-89FC-343F4017A5CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B69CA7-19F6-4171-89FC-343F4017A5CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B69CA7-19F6-4171-89FC-343F4017A5CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B69CA7-19F6-4171-89FC-343F4017A5CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{810763EC-7E20-4C91-86D2-CF4B37A6168E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{810763EC-7E20-4C91-86D2-CF4B37A6168E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{810763EC-7E20-4C91-86D2-CF4B37A6168E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{810763EC-7E20-4C91-86D2-CF4B37A6168E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {927D6929-3C87-4EBB-91C6-2965F9A78CCE}
+	EndGlobalSection
+EndGlobal

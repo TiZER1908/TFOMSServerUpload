@@ -1,0 +1,16 @@
+﻿.date-beg {
+    background-color: #89ff81;
+    padding: 4px;
+    border-radius: 6px;
+}
+
+.date-end {
+    background-color: #ff8183;
+    padding: 4px;
+    border-radius: 6px;
+}
+
+.upload {
+    padding-top: 1rem !important;
+    padding-left: 1rem !important;
+}

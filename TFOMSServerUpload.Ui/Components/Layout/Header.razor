@@ -1,0 +1,46 @@
+﻿<TelerikAppBar Height="60px" ThemeColor="dark" Class="header-telerik">
+    <AppBarSection>
+        <div class="logo">
+            <TelerikSvgIcon Icon="@SvgIcon.Circle" Class="logo-svg"></TelerikSvgIcon>
+            <a href="/">ТФОМС Сервер загрузки</a>
+        </div>
+        
+    </AppBarSection>
+
+    <AppBarSpacer></AppBarSpacer>
+
+    <AppBarSection>
+        <div class="link-upload">
+            <a href="/upload/1">Загрузка</a>
+        </div>
+    </AppBarSection>
+
+    <AppBarSection>
+        <div class="link-mek">
+            <span>МЭК</span>
+        </div>
+    </AppBarSection>
+
+    <AppBarSpacer></AppBarSpacer>
+
+    <AppBarSection>
+        <div class="user">
+            <span>Имя пользователя</span>
+        </div>
+    </AppBarSection>
+</TelerikAppBar>
+
+<style>
+    .logo-svg {
+        margin: 0;
+        color: blue;
+        width: 60px;
+        height: 60px;
+        padding-bottom: 5px
+    }
+
+    .header-telerik{
+        padding: 0 ;
+        margin: 0;
+    }
+</style>
