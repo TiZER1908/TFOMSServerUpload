@@ -8,16 +8,32 @@
         <span class="date-end">05.01.2024</span>
     </p>
 
-    <div class="upload-file">
-        <p>
-            Ручная загрузка реестра счетов
-        </p>
-        <hr>
-        <div class="div-button">
-            <TelerikButton Class="upload-button">Загрузить</TelerikButton>
-        </div>
-    </div>
+    <TelerikDropZone Id="dropzone-id"
+                 Class="dropzone"
+                 Height="auto">
+        <Template>
+            <div class="upload-file">
+                <p>
+                    Ручная загрузка реестра счетов
+                </p>
+                <hr>
+                <div class="div-button">
+                    <TelerikButton Class="upload-button" 
+                                   OnClick="@( () => UploadRef.OpenSelectFilesDialog() )">
+                        Загрузить
+                    </TelerikButton>
+                </div>
+            </div>
+        </Template>
+    </TelerikDropZone>
+
+    <TelerikUpload @ref="@UploadRef"
+                   DropZoneId="dropzone-id"
+                   Class="k-hidden">
+    </TelerikUpload>
+
 </div>
+
 
 
 <style>
@@ -28,4 +44,25 @@
         width: 180px;
         height: 25px;
     }
+
+    .dropzone{
+        width: 200px;
+    }
+
+    div.dropzone,
+    .dropzone .k-dropzone-inner {
+        display: block;
+        padding: 0;
+        border: none;
+        background-color: none;
+    }
+
+        .dropzone .k-dropzone-inner .k-icon {
+            margin: 0;
+            font-size: 64px;
+        }
 </style>
+
+@code{
+    private TelerikUpload UploadRef { get; set; }
+}
