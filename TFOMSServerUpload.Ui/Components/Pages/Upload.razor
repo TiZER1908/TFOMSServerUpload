@@ -23,7 +23,8 @@
                          Class="grid"
                          Sortable="true"
                          Width="80rem"
-                         Height="50rem">
+                         Height="50rem"
+                         @ref="@GridRef">
                 <GridColumns>
                     <GridColumn Field="Med" 
                                 Title="Медицинская организация" 
@@ -93,38 +94,85 @@
     [Parameter]
     public string id { get; set; }
 
+    private IEnumerable<Files> GridData { get; set; } = new List<Files>();
+
     TelerikDrawer<DrawerItem> DrawerRef { get; set; } = default!;
+
+    TelerikGrid<Files> GridRef { get; set; } = default!;
 
     DrawerItem SelectedItem { get; set; } = DrawerItem.None();
 
     List<DrawerItem> NavigablePages { get; set; } = new List<DrawerItem>
         {
-            new DrawerItem { Text = "МО 1", Url = "upload/1", Icon = SvgIcon.Plus, Id = "1"},
-            new DrawerItem { Text = "МО 2", Url = "upload/2", Icon = SvgIcon.Plus, Id = "2"},
-            new DrawerItem { Text = "МО 3", Url = "upload/3", Icon = SvgIcon.Plus, Id = "3"},
-            new DrawerItem { Text = "МО 4", Url = "upload/4", Icon = SvgIcon.Plus, Id = "4"},
+            new DrawerItem { Text = "МО 1", Url = "upload/1", Icon = SvgIcon.Plus, MedId = "1"},
+            new DrawerItem { Text = "МО 2", Url = "upload/2", Icon = SvgIcon.Plus, MedId = "2"},
+            new DrawerItem { Text = "МО 3", Url = "upload/3", Icon = SvgIcon.Plus, MedId = "3"},
+            new DrawerItem { Text = "МО 4", Url = "upload/4", Icon = SvgIcon.Plus, MedId = "4"},
         };
 
-    private List<Files> GridData { get; set; } = new List<Files>
+    private List<Files> FilesList { get; set; } = new List<Files>
     {
         new Files
         {
             Id=1,
+            MedId="1",
             Med="ЧУЗ \"МСЧ\"",
             File="B30000240101.packet",
             Status="ФЛК пройден",
             Date=DateTime.Parse("01.01.2024 13:55")
-        }
+        },
+        new Files
+        {
+            Id=1,
+            MedId="2",
+            Med="Тест2",
+            File="Тест2",
+            Status="ФЛК пройден",
+            Date=DateTime.Parse("01.01.2024 13:55")
+        },
+        new Files
+        {
+            Id=1,
+            MedId="3",
+            Med="Тест3",
+            File="Тест3",
+            Status="ФЛК пройден",
+            Date=DateTime.Parse("01.01.2024 13:55")
+        },
+        new Files
+        {
+            Id=1,
+            MedId="4",
+            Med="Тест4",
+            File="тест4",
+            Status="ФЛК пройден",
+            Date=DateTime.Parse("01.01.2024 13:55")
+        },
     };
+
+
 
     protected override void OnInitialized()
     {
-        SelectedItem = NavigablePages.FirstOrDefault(w => w.Id == id); ;
+
+        GridData = FilesList.Where(w => w.MedId == id);
+
+
+        SelectedItem = NavigablePages.FirstOrDefault(w => w.MedId == id);
 
         base.OnInitialized();
     }
 
-    public string GetChange(Files stock) => stock.Status;
+    protected override void OnParametersSet()
+    {
+        GridRef?.Rebind();
+
+        base.OnParametersSet();
+    }
+
+
+    private string GetChange(Files stock) => stock.Status;
+
     private void ReadMore(GridCommandEventArgs args)
     {
         
