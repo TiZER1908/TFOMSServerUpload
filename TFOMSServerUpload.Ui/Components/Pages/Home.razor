@@ -13,13 +13,21 @@
                  Height="auto">
         <Template>
             <div class="upload-file">
-                <p>
+                <p class="title">
                     Ручная загрузка реестра счетов
                 </p>
+
+                <p class="text">Перетащите сюда файл или нажмите выбрать файл</p>
+                <div class="div-button-select">
+                    <TelerikButton Class="select-button" 
+                        OnClick="@( () => UploadRef.OpenSelectFilesDialog() )">
+                            Выбрать файл
+                    </TelerikButton>
+                </div>
                 <hr>
-                <div class="div-button">
+                <div class="div-button-upload">
                     <TelerikButton Class="upload-button" 
-                                   OnClick="@( () => UploadRef.OpenSelectFilesDialog() )">
+                                   OnClick="@( () => Upload() )">
                         Загрузить
                     </TelerikButton>
                 </div>
@@ -32,7 +40,20 @@
                    Class="k-hidden">
     </TelerikUpload>
 
+
+    
+
 </div>
+
+<TelerikDialog @bind-Visible="@Visible"
+               Title="@Title">
+    <DialogContent>
+        Файлы успешно загруженны
+    </DialogContent>
+    <DialogButtons>
+        <TelerikButton OnClick="@(() => { Visible = false; })">OK</TelerikButton>
+    </DialogButtons>
+</TelerikDialog>
 
 
 
@@ -41,28 +62,113 @@
     .upload-button:hover {
         background-color: #749ebc;
         color: white;
+        width: 380px;
+        height: 25px;
+    }
+
+    .select-button,
+    .select-button:hover {
+        background-color: #cbcbcb;
+        color: black;
         width: 180px;
         height: 25px;
     }
 
     .dropzone{
-        width: 200px;
+        width: 400px;
+        height: 300px
     }
 
     div.dropzone,
     .dropzone .k-dropzone-inner {
         display: block;
         padding: 0;
+        background-color: none;
         border: none;
-        background: none;
+
     }
 
         .dropzone .k-dropzone-inner .k-icon {
             margin: 0;
             font-size: 64px;
         }
+
+    .upload-file {
+        width: 400px;
+        height: 300px;
+        background-color: #ededed;
+        border: solid;
+        border-color: #b8b8b8;
+        border-width: 1px;
+        border-radius: 5px;
+    }
+
+        .upload-file p.title {
+            font-size: 20px;
+            text-align: center;
+            padding-top: 20px;
+            line-height: 1;
+            color: black;
+        }
+
+        .upload-file p.text {
+            padding-left: 100px;
+            padding-right: 100px;
+            font-size: 15px;
+            text-align: center;
+            padding-top: 55px;
+            line-height: 1;
+            color: black;
+        }
+
+        .upload-file hr {
+            margin: auto;
+            border: none;
+            height: 0;
+            border-top: 2px solid #333;
+            padding: 0;
+            width: 85%;
+        }
+
+    .div-button-upload {
+        padding-top: 5px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px
+    }
+
+    .div-button-select {
+        height: 100px;
+        display: flex;
+        justify-content: center
+    }
+
+    .date-beg {
+        background-color: #89ff81;
+        padding: 4px;
+        border-radius: 6px;
+    }
+
+    .date-end {
+        background-color: #ff8183;
+        padding: 4px;
+        border-radius: 6px;
+    }
+
+    .home {
+        padding-top: 1rem !important;
+        padding-right: 15rem !important;
+        padding-left: 15rem !important
+    }
 </style>
 
 @code{
+    private bool Visible { get; set; }
+    private string Title { get; set; } = "Успех";
     private TelerikUpload UploadRef { get; set; }
+
+    private void Upload()
+    {
+        Visible = true;
+    }
 }

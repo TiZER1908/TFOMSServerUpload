@@ -1,7 +1,7 @@
-﻿<TelerikAppBar Height="60px" ThemeColor="dark" Class="header-telerik">
+﻿<TelerikAppBar Height="60px" ThemeColor="light" Class="header-telerik">
     <AppBarSection>
         <div class="logo">
-            <TelerikSvgIcon Icon="@SvgIcon.Circle" Class="logo-svg"></TelerikSvgIcon>
+            <TelerikSvgIcon Icon="SvgIcon.Download" Class="download-svg"></TelerikSvgIcon>
             <a href="/">ТФОМС Сервер загрузки</a>
         </div>
         
@@ -13,34 +13,154 @@
         <div class="link-upload">
             <a href="/upload/1">Загрузка</a>
         </div>
-    </AppBarSection>
-
-    <AppBarSection>
         <div class="link-mek">
             <span>МЭК</span>
         </div>
     </AppBarSection>
 
-    <AppBarSpacer></AppBarSpacer>
-
     <AppBarSection>
         <div class="user">
             <span>Имя пользователя</span>
         </div>
+        <div class="div-menu">
+            <TelerikMenu Data="@MenuItems" Class="menu" />
+        </div>
     </AppBarSection>
+
 </TelerikAppBar>
 
 <style>
-    .logo-svg {
-        margin: 0;
-        color: blue;
-        width: 60px;
-        height: 60px;
-        padding-bottom: 5px
+    .download-svg{
+        color:black;
+        width: 30px;
+        height: 30px;
     }
 
     .header-telerik{
         padding: 0 ;
-        margin: 0;
+        margin: -2px 0 0 0;
     }
+
+    a {
+        color: black;
+        outline: none;
+        text-decoration: none;
+    }
+
+        a:link {
+            color: black;
+        }
+
+        a:visited {
+            color: black;
+        }
+
+        a:focus {
+            color: black;
+        }
+
+        a:hover {
+            color: black;
+        }
+
+        a:active {
+            color: black;
+        }
+
+    .logo {
+        padding-left: 30px;
+    }
+
+        .logo a {
+            padding-left: 0;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-right: 8px;
+        }
+
+    div.link-mek {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width:100px;
+        border-right: 1px solid #d3d3d3;
+    }
+
+    div.link-mek:hover{
+        background-color: #f6f6f6
+    }
+
+        div.link-mek span{
+            padding: 20px;
+        }
+
+    div.link-upload {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        border-left: 1px solid #d3d3d3;
+        border-right: 1px solid #d3d3d3;
+    }
+
+        div.link-upload:hover {
+            background-color: #f6f6f6
+        }
+
+        div.link-upload a {
+            padding: 20px;
+        }
+
+    div.user {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ececec;
+    }
+
+        div.user span {
+            padding: 20px;
+        }
+
+    div.div-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ececec;
+    }
+
+    .menu .k-menu-link{
+        color: black
+    }
+
 </style>
+
+@code{
+    public List<MenuItem> MenuItems { get; set; } = new List<MenuItem>
+    {
+        new MenuItem()
+            {
+                Icon = SvgIcon.Gear,
+                Items = new List<MenuItem>()
+                {
+                    new MenuItem()
+                    {
+                        Text = "Тест1",
+                        Url = ""
+                    },
+                    new MenuItem()
+                    {
+                        Text = "Тест2",
+                        Url = ""
+                    },
+                    new MenuItem()
+                    {
+                        Text = "Тест3",
+                        Url = ""
+                    }
+                }
+            },
+    };
+}

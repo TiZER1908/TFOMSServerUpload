@@ -10,6 +10,7 @@
                @ref="@DrawerRef"
                Expanded=true
                Width="14rem"
+               Class="drawer"
                @bind-SelectedItem="@SelectedItem">
     <DrawerContent>
         <div class="upload">
@@ -64,6 +65,19 @@
     </DrawerContent>
 </TelerikDrawer>
 
+<TelerikDialog @bind-Visible="@Visible"
+               Title="@Title">
+    <DialogContent>
+        <p>
+            @info
+        </p>
+    </DialogContent>
+    <DialogButtons>
+        <TelerikButton OnClick="@(() => { Visible = false; })">OK</TelerikButton>
+    </DialogButtons>
+</TelerikDialog>
+
+
 <style>
     .grid-button,
     .grid-button:hover{
@@ -77,6 +91,13 @@
         text-align: center;
     }
 
+    .drawer .k-selected,
+    .drawer .k-selected:hover{
+        background-color: #cbcbcb
+
+    } 
+
+
     .status {
         background-color: #81fdff;
         padding: 4px 15px;
@@ -86,6 +107,23 @@
     th.center-me .k-cell-inner > .k-link {
         justify-content: center;
     }
+
+    .date-beg {
+        background-color: #89ff81;
+        padding: 4px;
+        border-radius: 6px;
+    }
+
+    .date-end {
+        background-color: #ff8183;
+        padding: 4px;
+        border-radius: 6px;
+    }
+
+    .upload {
+        padding-top: 1rem !important;
+        padding-left: 1rem !important;
+    }
 </style>
 
 
@@ -93,6 +131,10 @@
 @code {
     [Parameter]
     public string id { get; set; }
+
+    private bool Visible { get; set; }
+    private string Title { get; set; } = "";
+    private MarkupString info { get; set; }
 
     private IEnumerable<Files> GridData { get; set; } = new List<Files>();
 
@@ -175,6 +217,9 @@
 
     private void ReadMore(GridCommandEventArgs args)
     {
-        
+        Files item = (Files)args.Item;
+        Title = item.Med;
+        info = new MarkupString($"Файл: {item.File} <br/>Статус: {item.Status} <br/>Дата последнего обновления: {item.Date.ToString()}");
+        Visible = true;
     }
 }
